@@ -3,6 +3,7 @@
 #include "identificacao_ficha.h"
 #include "identificacao_ee.h"
 #include "classificacoes_disciplina.h"
+#include <fstream>
 
 #include <iostream>
 
@@ -72,8 +73,8 @@ void identificacao_ficha::preencher(){
 
 }
 
-void identificacao_ficha::identificacao_criar_ficheiro(fstream &f, identificacao_ficha ficha){
-    f.seekg(0);
+void identificacao_ficha::identificacao_criar_ficheiro(ostream& f, identificacao_ficha ficha){
+    f.seekp(0);
     f.write(
         (const char *)(&ficha),
         sizeof(ficha)

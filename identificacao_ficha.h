@@ -1,3 +1,6 @@
+#ifndef IDENTIFICACAO_FICHA_H
+#define IDENTIFICACAO_FICHA_H
+
 #include "datas.h"
 #include "identificacao_aluno.h"
 #include "identificacao_ee.h"
@@ -29,6 +32,8 @@ typedef struct IDENTIFICACAO_FICHA {
     
     void preencher();
     void imprimir();
-    void identificacao_criar_ficheiro(fstream &f, struct IDENTIFICACAO_FICHA ficha);   
+    void identificacao_criar_ficheiro(ostream& f, struct IDENTIFICACAO_FICHA ficha);
 
 } identificacao_ficha;
+
+#endif
