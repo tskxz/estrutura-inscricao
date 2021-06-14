@@ -1,4 +1,5 @@
-#include "identificao_ee.h"
+#include "identificacao_ee.h"
+#include <fstream>
 #include <iostream>
 
 using namespace std;
@@ -25,10 +26,10 @@ void identificacao_ee::imprimir(){
     cout << email << endl;
 }
 
-void identificacao_aluno::identificacao_ee_criar_ficheiro(fstream &f, identificacao_ee ee){
+void identificacao_ee::identificacao_ee_criar_ficheiro(fstream &f, identificacao_ee ee){
     f.seekg(0);
     f.write(
         (const char *)(&ee),
         sizeof(ee)
-    ):
+    );
 }

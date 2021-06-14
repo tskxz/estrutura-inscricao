@@ -1,3 +1,6 @@
+#ifndef DATAS_H
+#define DATAS_H
+
 typedef struct DATAS {
     int dia;
     int mes;
@@ -7,3 +10,4 @@ typedef struct DATAS {
     void imprimir();
     
 } datas;
+#endif

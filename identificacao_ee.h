@@ -1,3 +1,8 @@
+#ifndef IDENTIFICACAO_EE_H
+#define IDENTIFICACAO_EE_H
+#include <fstream>
+using namespace std;
+
 typedef struct IDENTIFICACAO_EE {
 
     char nome[100];
@@ -10,3 +15,4 @@ typedef struct IDENTIFICACAO_EE {
     
     
 } identificacao_ee;
+#endif

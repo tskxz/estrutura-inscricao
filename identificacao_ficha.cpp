@@ -1,6 +1,7 @@
 #include "datas.h"
-#include "indentificao_aluno.h"
-#include "indentificao_ee.h"
+#include "identificacao_aluno.h"
+#include "identificacao_ficha.h"
+#include "identificacao_ee.h"
 #include "classificacoes_disciplina.h"
 
 #include <iostream>
@@ -9,7 +10,7 @@ using namespace std;
 
 void identificacao_ficha::preencher(){
     cout << "Numero da inscricao: ";
-    cin >> num_inscricao
+    cin >> num_inscricao;
 
     ID = ID+1;
     aluno.preencher();
@@ -38,7 +39,7 @@ void identificacao_ficha::preencher(){
     cout << "Conhece o plano curricular de um curso profissional?: [1/0]";
     cin >> conhece_planocurricular;
     if(conhece_planocurricular == 1){
-        cout << "Diga exemplos: "
+        cout << "Diga exemplos: ";
         cin >> exemplos_curricular;
     }
 
@@ -76,7 +77,7 @@ void identificacao_ficha::identificacao_criar_ficheiro(fstream &f, identificacao
     f.write(
         (const char *)(&ficha),
         sizeof(ficha)
-    ):
+    );
 }
 
 void identificacao_ficha::imprimir(){

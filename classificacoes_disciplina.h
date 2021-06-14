@@ -1,3 +1,6 @@
+#ifndef CLASSIFICACOES_DISCIPLINA
+#define CLASSIFICACOES_DISCIPLINA
+
 typedef struct CLASSIFICACOES_DISCIPLINA{
 
     int tic[3];
@@ -10,3 +13,4 @@ typedef struct CLASSIFICACOES_DISCIPLINA{
     void imprimir();
     
 } classificacoes_disciplina;
+#endif

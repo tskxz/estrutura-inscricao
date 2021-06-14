@@ -1,4 +1,10 @@
+#ifndef IDENTIFICACAO_ALUNO_H
+#define IDENTIFICACAO_ALUNO_H
+
 #include "datas.h"
+#include <fstream>
+
+using namespace std;
 
 typedef struct IDENTIFICACAO_ALUNO {
 
@@ -15,3 +21,5 @@ typedef struct IDENTIFICACAO_ALUNO {
     void identificacao_aluno_criar_ficheiro(fstream &f, struct IDENTIFICACAO_ALUNO aluno);
 
 } identificacao_aluno;
+
+#endif

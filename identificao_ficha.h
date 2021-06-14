@@ -1,6 +1,6 @@
 #include "datas.h"
-#include "indentificao_aluno.h"
-#include "indentificao_ee.h"
+#include "identificacao_aluno.h"
+#include "identificacao_ee.h"
 #include "classificacoes_disciplina.h"
 
 typedef struct IDENTIFICACAO_FICHA {
