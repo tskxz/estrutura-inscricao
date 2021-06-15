@@ -4,6 +4,7 @@
 #include "identificacao_ee.h"
 #include "classificacoes_disciplina.h"
 #include <fstream>
+#include <string>
 
 #include <iostream>
 
@@ -12,7 +13,7 @@ using namespace std;
 void identificacao_ficha::preencher(){
     cout << "Numero da inscricao: ";
     cin >> num_inscricao;
-
+    
     ID = ID+1;
     aluno.preencher();
     ee.preencher();
@@ -28,47 +29,57 @@ void identificacao_ficha::preencher(){
 
     cout << "Faltas Disciplinares [1/0]: ";
     cin >> faltas_disciplinares;
-
-    cout << "Razao da falta disciplinar: ";
-    cin >> razao_fdisciplinar;
+    
+    if(faltas_disciplinares == 1){
+        cout << "Razao da falta disciplinar: ";
+        cin.ignore();
+        cin.getline(razao_fdisciplinar, 500);
+    }
 
     notas_disciplinas.preencher();
 
     cout << "Escreva a motivacao para a escolha deste curso profissional: ";
-    cin >> motivacao_cursoprofissional;
+    cin.ignore();
+    cin.getline(motivacao_cursoprofissional, 500);
     
-    cout << "Conhece o plano curricular de um curso profissional?: [1/0]";
+    cout << "Conhece o plano curricular de um curso profissional? [1/0]: ";
     cin >> conhece_planocurricular;
     if(conhece_planocurricular == 1){
         cout << "Diga exemplos: ";
-        cin >> exemplos_curricular;
+        cin.ignore();
+        cin.getline(exemplos_curricular, 500);
+        
     }
 
-    cout << "Em termos de funcionamento, estes cursos estao sujeitos a uma carga letiva superior a das turmas de progressimentos de estudos, tem conhecimento dessa situacao?: [1/0]";
+    cout << "Em termos de funcionamento, estes cursos estao sujeitos a uma carga letiva superior a das turmas de progressimentos de estudos, tem conhecimento dessa situacao? [1/0] : ";
     cin >> conhece_cargo;
     if(conhece_cargo == 1){
         cout << "Escreva as expetativas sobre o horario deste curso: ";
-        cin >> expetativa_horario;
+        cin.ignore();
+        cin.getline(expetativa_horario, 500);
     }
-    cout << "A formacao dos cursos profissionais esta organizada numa estrutura modular. Sabe o significado de Estrutura modular?: ";
+    cout << "A formacao dos cursos profissionais esta organizada numa estrutura modular. Sabe o significado de Estrutura modular? [1/0]: ";
     cin >> estrutura_modular_sn;
     if(estrutura_modular_sn == 1){
         cout << "Indique o significado da estrutura modular: ";
-        cin >> significado_estruturamodular;
-
+        
+        cin.getline(significado_estruturamodular, 500);
         cout << "Indique o significado da avaliacao modular: ";
-        cin >> significado_avaliacaomodular;
+        cin.ignore();
+        cin.getline(descrever_trabalho, 500);
+    
     }
     cout << "Ao longo de um curso profissional ocorrem tres momentos de formacao em contexto de trabalho. Sabe o tipo de trabalho realizado nessa area?: ";
     cin >> tipo_trabalho_conhece;
     if(tipo_trabalho_conhece == 1){
         cout << "Descreva o tipo de trabalho e em que instituicoes se pode realizar em formacao de contexto de trabalho: ";
-        cin >> descrever_trabalho;
+        cin.ignore();
+        cin.getline(descrever_trabalho, 500);
     }
 
     cout << "Expresse neste espaço as suas expetativas face ao Curso e a esta escola: ";
-    cin >> expetativas;
-
+    cin.ignore();
+    cin.getline(expetativas, 500);
 
 
 }
