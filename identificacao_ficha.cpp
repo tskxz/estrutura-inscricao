@@ -102,11 +102,14 @@ void identificacao_ficha::identificacao_read_ficheiro(istream& f, identificacao_
 
 void IDENTIFICACAO_FICHA::identificacao_criartudo_ficheiro(ostream& f, identificacao_ficha ficha[100]){
     f.seekp(0);
-    for(int i = 0; i<len(ficha); i++)
-    f.write(
+    int len = sizeof(ficha)/sizeof(ficha[0]);
+    for(int i = 0; i<len; i++){
+        f.write(
         (const char *)(&ficha[i]),
         sizeof(ficha)
-    );
+    );    
+    }
+    
 }
 
 void identificacao_ficha::imprimir(){
