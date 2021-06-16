@@ -13,7 +13,7 @@ using namespace std;
 void identificacao_ficha::preencher(){
     cout << "Numero da inscricao: ";
     cin >> num_inscricao;
-    /*
+    
     ID = ID+1;
     aluno.preencher();
     ee.preencher();
@@ -79,7 +79,7 @@ void identificacao_ficha::preencher(){
 
     cout << "Expresse neste espaço as suas expetativas face ao Curso e a esta escola: ";
     cin.ignore();
-    cin.getline(expetativas, 500);*/
+    cin.getline(expetativas, 500);
 
 
 }
@@ -98,6 +98,14 @@ void identificacao_ficha::identificacao_read_ficheiro(istream& f, identificacao_
         (char *)(&ficha),
         sizeof(ficha)
     );
+    while(!f.eof()){
+        
+        f.read(
+            (char*)(&ficha),
+            sizeof(ficha)
+        );
+        ficha.imprimir();
+    }
 }
 
 void IDENTIFICACAO_FICHA::identificacao_criartudo_ficheiro(ostream& f, identificacao_ficha ficha[100]){
@@ -106,7 +114,7 @@ void IDENTIFICACAO_FICHA::identificacao_criartudo_ficheiro(ostream& f, identific
     for(int i = 0; i<len; i++){
         f.write(
         (const char *)(&ficha[i]),
-        sizeof(ficha)
+        sizeof(ficha[i])
     );    
     }
     
@@ -115,7 +123,7 @@ void IDENTIFICACAO_FICHA::identificacao_criartudo_ficheiro(ostream& f, identific
 void identificacao_ficha::imprimir(){
     
     cout << "Numero da inscricao: " << num_inscricao << endl;
-    /*
+    
     cout << "ID: " << ID << endl;
     aluno.imprimir();
     ee.imprimir();
@@ -143,6 +151,7 @@ void identificacao_ficha::imprimir(){
     cout << significado_avaliacaomodular << endl;
     cout << descrever_trabalho << endl;
     cout << expetativas << endl;
-    */
+    
+    
 
 }

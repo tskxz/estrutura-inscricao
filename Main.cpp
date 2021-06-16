@@ -8,10 +8,11 @@ int main(void){
     identificacao_ficha fichas[100];
     int num_fichas = 0;
     do {
-        cout << "1. Criar Ficha" << endl;
-        cout << "2. Mostrar Ficha" << endl;
+        cout << "1. Criar e armazenar Ficha" << endl;
+        cout << "2. Imprimir conteudo da Ficha" << endl;
         cout << "3. Fechar o Programa" << endl;
         cout << "4. Mostrar o MENU" << endl;
+        cout << "5. Armazenar Ficha em todos registos" << endl;
         cout << "Escolha: ";
         cin >> escolha;
         
@@ -35,26 +36,37 @@ int main(void){
                 break;
             }
             case 2: {
+                identificacao_ficha ficha;
                 /*
                 char nomereadfich[100];
                 cout << "Nome do ficheiro: ";
                 cin.ignore();
                 cin.getline(nomereadfich, 100);
-                ifstream fichabinario_read(nomereadfich, ios::in | ios::binary);
+                
                 ficha01.identificacao_read_ficheiro(fichabinario_read, ficha01);
                 fichabinario_read.close();
                 
                 
                 */
-                cout << "Indique o ID da ficha que gostaria de ver: ";
-                int ID;
-                cin >> ID;
-                fichas[ID].imprimir();
+                // cout << "Indique o ID da ficha que gostaria de ver: ";
+                // int ID;
+                // cin >> ID;
+                // fichas[ID].imprimir();
+                char nomereadfich[100];
+                cout << "Nome do ficheiro: ";
+                cin.ignore();
+                cin.getline(nomereadfich, 100);
+                ifstream fichabinario_read(nomereadfich, ios::in | ios::binary);
+                ficha.identificacao_read_ficheiro(fichabinario_read, ficha);
                 break;
             }
             case 3: {
                 cout << "Fechando o programa" << endl;
                 return -1;
+            }
+            case 5: {
+                cout << "teste" << endl;
+                break;
             }
             default:
                 break;
