@@ -51,7 +51,10 @@ int main(void){
                 return -1;
             }
             case 5: {
-                cout << "teste" << endl;
+                ofstream fichabinario_write("TODOSREGISTOS.dat", ios::out | ios::binary);
+            
+                fichas[num_fichas].identificacao_criar_ficheiro(fichabinario_write, fichas[num_fichas]);
+                fichabinario_write.close();
                 break;
             }
             default:

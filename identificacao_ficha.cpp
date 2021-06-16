@@ -84,7 +84,7 @@ void identificacao_ficha::preencher(){
 
 }
 
-void identificacao_ficha::identificacao_criar_ficheiro(ostream& f, identificacao_ficha ficha){
+void IDENTIFICACAO_FICHA::identificacao_criar_ficheiro(ostream& f, identificacao_ficha ficha){
     f.seekp(0);
     f.write(
         (const char *)(&ficha),
@@ -92,7 +92,7 @@ void identificacao_ficha::identificacao_criar_ficheiro(ostream& f, identificacao
     );
 }
 
-void identificacao_ficha::identificacao_read_ficheiro(istream& f, identificacao_ficha ficha){
+void IDENTIFICACAO_FICHA::identificacao_read_ficheiro(istream& f, identificacao_ficha ficha){
     f.seekg(0);
     f.read(
         (char *)(&ficha),
