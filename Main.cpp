@@ -13,6 +13,7 @@ int main(void){
         cout << "3. Fechar o Programa" << endl;
         cout << "4. Mostrar o MENU" << endl;
         cout << "5. Armazenar Ficha em todos registos" << endl;
+        cout << "6. Mostrar os registos de forma ordenada pela idade" << endl;
         cout << "Escolha: ";
         cin >> escolha;
         
@@ -43,7 +44,7 @@ int main(void){
                 cin.ignore();
                 cin.getline(nomereadfich, 100);
                 ifstream fichabinario_read(nomereadfich, ios::in | ios::binary);
-                ficha.identificacao_read_ficheiro(fichabinario_read, ficha);
+                ficha.identificacao_imprimir_ficheiro(fichabinario_read, ficha);
                 break;
             }
             case 3: {
@@ -52,9 +53,19 @@ int main(void){
             }
             case 5: {
                 ofstream fichabinario_write("TODOSREGISTOS.dat", ios::out | ios::binary);
-            
-                fichas[num_fichas].identificacao_criar_ficheiro(fichabinario_write, fichas[num_fichas]);
+                
+                fichas[0].identificacao_criartudo_ficheiro(fichabinario_write, fichas);
                 fichabinario_write.close();
+                break;
+            }
+            case 6: {
+                ofstream fichabinario_ordenado_o("ordenado.dat", ios::out | ios::binary);
+
+
+                ifstream fichabinario_ordenado("ordenado.dat", ios::in | ios::binary);
+                fichas[0].imprimir_ordenado(fichabinario_ordenado_o, fichabinario_ordenado, fichas);
+                
+
                 break;
             }
             default:

@@ -15,7 +15,7 @@ void identificacao_ficha::preencher(){
     cin >> num_inscricao;
     
     ID = ID+1;
-    aluno.preencher();
+    aluno.preencher();/*
     ee.preencher();
 
     cout << "Escola de origem: ";
@@ -81,7 +81,7 @@ void identificacao_ficha::preencher(){
     cin.ignore();
     cin.getline(expetativas, 500);
 
-
+*/
 }
 
 void IDENTIFICACAO_FICHA::identificacao_criar_ficheiro(ostream& f, identificacao_ficha ficha){
@@ -92,7 +92,7 @@ void IDENTIFICACAO_FICHA::identificacao_criar_ficheiro(ostream& f, identificacao
     );
 }
 
-void IDENTIFICACAO_FICHA::identificacao_read_ficheiro(istream& f, identificacao_ficha ficha){
+void IDENTIFICACAO_FICHA::identificacao_imprimir_ficheiro(istream& f, identificacao_ficha ficha){
     f.seekg(0);
     f.read(
         (char *)(&ficha),
@@ -120,7 +120,7 @@ void IDENTIFICACAO_FICHA::identificacao_criartudo_ficheiro(ostream& f, identific
     
 }
 
-void identificacao_ficha::imprimir(){
+void IDENTIFICACAO_FICHA::imprimir(){
     
     cout << "Numero da inscricao: " << num_inscricao << endl;
     
@@ -153,5 +153,46 @@ void identificacao_ficha::imprimir(){
     cout << expetativas << endl;
     
     
+
+}
+
+void IDENTIFICACAO_FICHA::imprimir_ordenado(ostream& fo, istream& fi, identificacao_ficha ficha[100]){
+
+    fo.seekp(0);
+    int len = sizeof(ficha)/sizeof(ficha[0]);
+    for(int i = 0; i<len; i++){
+        for(int j = 0; j<len-i-1;j++){
+            if(ficha[j].aluno.idade > ficha[j+1].aluno.idade){
+                int temp = ficha[j].aluno.idade;
+                ficha[j].aluno.idade = ficha[j+1].aluno.idade;
+                ficha[j+1].aluno.idade = temp;
+            }
+        }
+        fo.write(
+        (const char *)(&ficha[i]),
+        sizeof(ficha[i])
+    );
+    }
+
+    fi.seekg(0);
+    for(int i = 0; i<len; i++){
+        fi.read(
+            (char *)(&ficha[i]),
+            sizeof(ficha[i])
+        );
+        while(!fi.eof()){
+
+            fi.read(
+                (char*)(&ficha[i]),
+                sizeof(ficha[i])
+            );
+            ficha[i].imprimir();
+            cout << ficha[i].aluno.idade << endl;
+        }
+
+    }
+
+
+
 
 }
