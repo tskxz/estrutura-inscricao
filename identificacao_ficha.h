@@ -33,6 +33,8 @@ typedef struct IDENTIFICACAO_FICHA {
     void preencher();
     void imprimir();
     void identificacao_criar_ficheiro(ostream& f, struct IDENTIFICACAO_FICHA ficha);
+    void identificacao_criartudo_ficheiro(ostream& f, struct IDENTIFICACAO_FICHA ficha[100]);
+    void identificacao_read_ficheiro(istream& f, struct IDENTIFICACAO_FICHA ficha);
 
 } identificacao_ficha;
 
