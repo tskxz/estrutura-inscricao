@@ -11,7 +11,6 @@ typedef struct IDENTIFICACAO_EE {
     
     void preencher();
     void imprimir();
-    void identificacao_ee_criar_ficheiro(fstream &f, struct IDENTIFICACAO_EE ee);
     
     
 } identificacao_ee;

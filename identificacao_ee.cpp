@@ -25,11 +25,3 @@ void identificacao_ee::imprimir(){
     cout << "Email do ee: ";
     cout << email << endl;
 }
-
-void identificacao_ee::identificacao_ee_criar_ficheiro(fstream &f, identificacao_ee ee){
-    f.seekg(0);
-    f.write(
-        (const char *)(&ee),
-        sizeof(ee)
-    );
-}

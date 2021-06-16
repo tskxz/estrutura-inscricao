@@ -46,11 +46,3 @@ void identificacao_aluno::imprimir(){
     cout << "Email do aluno: ";
     cout << email << endl;
 }
-
-void identificacao_aluno::identificacao_aluno_criar_ficheiro(fstream &f, identificacao_aluno aluno){
-    f.seekg(0);
-    f.write(
-        (const char *)(&aluno),
-        sizeof(aluno)
-    );
-}

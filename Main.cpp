@@ -37,21 +37,7 @@ int main(void){
             }
             case 2: {
                 identificacao_ficha ficha;
-                /*
-                char nomereadfich[100];
-                cout << "Nome do ficheiro: ";
-                cin.ignore();
-                cin.getline(nomereadfich, 100);
-                
-                ficha01.identificacao_read_ficheiro(fichabinario_read, ficha01);
-                fichabinario_read.close();
-                
-                
-                */
-                // cout << "Indique o ID da ficha que gostaria de ver: ";
-                // int ID;
-                // cin >> ID;
-                // fichas[ID].imprimir();
+
                 char nomereadfich[100];
                 cout << "Nome do ficheiro: ";
                 cin.ignore();

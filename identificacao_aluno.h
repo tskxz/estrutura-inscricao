@@ -2,7 +2,6 @@
 #define IDENTIFICACAO_ALUNO_H
 
 #include "datas.h"
-#include <fstream>
 
 using namespace std;
 
@@ -18,7 +17,7 @@ typedef struct IDENTIFICACAO_ALUNO {
     
     void preencher();
     void imprimir();
-    void identificacao_aluno_criar_ficheiro(fstream &f, struct IDENTIFICACAO_ALUNO aluno);
+
 
 } identificacao_aluno;
 
