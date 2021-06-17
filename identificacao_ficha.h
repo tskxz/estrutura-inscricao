@@ -14,19 +14,19 @@ typedef struct IDENTIFICACAO_FICHA {
     identificacao_ee ee;
     char escola_origem[100];
     int ultimo_ano_frequentado;
-    int repetente;
-    int faltas_disciplinares;
+    char repetente;
+    char faltas_disciplinares;
     char razao_fdisciplinar[500];
     classificacoes_disciplina notas_disciplinas;
     char motivacao_cursoprofissional[500];
-    int conhece_planocurricular;
+    char conhece_planocurricular;
     char exemplos_curricular[500];
-    int conhece_cargo;
+    char conhece_cargo;
     char expetativa_horario[500];
-    int estrutura_modular_sn;
+    char estrutura_modular_sn;
     char significado_estruturamodular[500];
     char significado_avaliacaomodular[500];
-    int tipo_trabalho_conhece;
+    char tipo_trabalho_conhece;
     char descrever_trabalho[500];
     char expetativas[500];
     
