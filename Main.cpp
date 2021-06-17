@@ -14,6 +14,7 @@ int main(void){
         cout << "4. Mostrar o MENU" << endl;
         cout << "5. Pesquisar atraves do numero da inscricao" << endl;
         cout << "6. Mostrar os registos por ordem da idade" << endl;
+        cout << "7. Mostrar o registo armazenado de um ficheiro" << endl;
 
         cout << "Escolha: ";
         cin >> escolha;
@@ -22,7 +23,7 @@ int main(void){
             case 1: {
                 
                 ofstream fichabinario;
-                fichabinario.open("REGISTOS.dat", ios::binary | ios::app);
+                fichabinario.open("REGISTOS.dat", ios::out | ios::binary | ios::app);
                 fichas[num_fichas].preencher();
                 fichas[num_fichas].identificacao_criar_ficheiro(fichabinario, fichas[num_fichas]);
                 fichabinario.close();
@@ -59,6 +60,23 @@ int main(void){
                 }
                 break;
             }
+            case 6: {
+                identificacao_ficha ficha;
+                ficha.imprimir_ordem(fichas, num_fichas);
+                break;   
+            }
+
+            case 7: {
+                identificacao_ficha ficha;
+
+                char nomereadfich[100];
+                cout << "Nome do ficheiro: ";
+                cin.ignore();
+                cin.getline(nomereadfich, 100);
+                ifstream fichabinario_read(nomereadfich, ios::in | ios::binary);
+                ficha.identificacao_imprimir_ficheiro(fichabinario_read, ficha);
+                break;
+            }
             default:
                 break;
 
@@ -66,8 +84,4 @@ int main(void){
     
     } while(escolha != 3);
     
-    
-    
-    
-    
-}   
+}
