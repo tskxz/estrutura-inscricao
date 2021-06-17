@@ -9,24 +9,23 @@
 #include <iostream>
 
 using namespace std;
+identificacao_ficha::IDENTIFICACAO_FICHA(){
 
-void identificacao_ficha::preencher(){
+}
+void IDENTIFICACAO_FICHA::preencher(){
     cout << "Numero da inscricao: ";
     cin >> num_inscricao;
-    
-    ID = ID+1;
-    aluno.preencher();/*
-    ee.preencher();
 
+    // aluno.preencher();
+    /*
+    ee.preencher();
     cout << "Escola de origem: ";
     cin >> escola_origem;
     
     cout << "Ultimo ano frequentado: ";
     cin >> ultimo_ano_frequentado;
-
     cout << "Repetente [1/0]: ";
     cin >> repetente;
-
     cout << "Faltas Disciplinares [1/0]: ";
     cin >> faltas_disciplinares;
     
@@ -35,9 +34,7 @@ void identificacao_ficha::preencher(){
         cin.ignore();
         cin.getline(razao_fdisciplinar, 500);
     }
-
     notas_disciplinas.preencher();
-
     cout << "Escreva a motivacao para a escolha deste curso profissional: ";
     cin.ignore();
     cin.getline(motivacao_cursoprofissional, 500);
@@ -50,7 +47,6 @@ void identificacao_ficha::preencher(){
         cin.getline(exemplos_curricular, 500);
         
     }
-
     cout << "Em termos de funcionamento, estes cursos estao sujeitos a uma carga letiva superior a das turmas de progressimentos de estudos, tem conhecimento dessa situacao? [1/0] : ";
     cin >> conhece_cargo;
     if(conhece_cargo == 1){
@@ -76,12 +72,11 @@ void identificacao_ficha::preencher(){
         cin.ignore();
         cin.getline(descrever_trabalho, 500);
     }
-
     cout << "Expresse neste espaço as suas expetativas face ao Curso e a esta escola: ";
     cin.ignore();
     cin.getline(expetativas, 500);
-
 */
+    ID = ID + 1;
 }
 
 void IDENTIFICACAO_FICHA::identificacao_criar_ficheiro(ostream& f, identificacao_ficha ficha){
@@ -94,31 +89,28 @@ void IDENTIFICACAO_FICHA::identificacao_criar_ficheiro(ostream& f, identificacao
 
 void IDENTIFICACAO_FICHA::identificacao_imprimir_ficheiro(istream& f, identificacao_ficha ficha){
     f.seekg(0);
-    f.read(
-        (char *)(&ficha),
-        sizeof(ficha)
-    );
     while(!f.eof()){
-        
         f.read(
             (char*)(&ficha),
             sizeof(ficha)
         );
         ficha.imprimir();
+        cout << endl;
+        // ficha.imprimir_tudo(fichas, num_fichas);
     }
 }
-
-void IDENTIFICACAO_FICHA::identificacao_criartudo_ficheiro(ostream& f, identificacao_ficha ficha[100]){
+/*
+void IDENTIFICACAO_FICHA::identificacao_criartudo_ficheiro(ostream& f, identificacao_ficha ficha[100], int len){
     f.seekp(0);
-    int len = sizeof(ficha)/sizeof(ficha[0]);
-    for(int i = 0; i<len; i++){
+    // int len = *(&ficha + 1) - ficha;
+    for(int i = 0; i<=len; i++){
         f.write(
         (const char *)(&ficha[i]),
         sizeof(ficha[i])
     );    
     }
     
-}
+}*/
 
 void IDENTIFICACAO_FICHA::imprimir(){
     
@@ -155,12 +147,18 @@ void IDENTIFICACAO_FICHA::imprimir(){
     
 
 }
-
-void IDENTIFICACAO_FICHA::imprimir_ordenado(ostream& fo, istream& fi, identificacao_ficha ficha[100]){
+/*
+void IDENTIFICACAO_FICHA::imprimir_tudo(identificacao_ficha ficha[100], int len){
+    // int len = *(&ficha + 1) - ficha;
+    for(int i = 0; i<=len; i++){
+        ficha[i].imprimir();
+    }
+}
+void IDENTIFICACAO_FICHA::imprimir_ordenado(ostream& fo, istream& fi, identificacao_ficha ficha[100], int len){
 
     fo.seekp(0);
-    int len = sizeof(ficha)/sizeof(ficha[0]);
-    for(int i = 0; i<len; i++){
+    // int len = *(&ficha + 1) - ficha;
+    for(int i = 0; i<=len; i++){
         for(int j = 0; j<len-i-1;j++){
             if(ficha[j].aluno.idade > ficha[j+1].aluno.idade){
                 int temp = ficha[j].aluno.idade;
@@ -175,7 +173,7 @@ void IDENTIFICACAO_FICHA::imprimir_ordenado(ostream& fo, istream& fi, identifica
     }
 
     fi.seekg(0);
-    for(int i = 0; i<len; i++){
+    for(int i = 0; i<=len; i++){
         fi.read(
             (char *)(&ficha[i]),
             sizeof(ficha[i])
@@ -191,8 +189,4 @@ void IDENTIFICACAO_FICHA::imprimir_ordenado(ostream& fo, istream& fi, identifica
         }
 
     }
-
-
-
-
-}
+}*/

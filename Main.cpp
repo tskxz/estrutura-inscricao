@@ -8,43 +8,34 @@ int main(void){
     identificacao_ficha fichas[100];
     int num_fichas = 0;
     do {
-        cout << "1. Criar e armazenar Ficha" << endl;
-        cout << "2. Imprimir conteudo da Ficha" << endl;
+        cout << "1. Criar Ficha" << endl;
+        cout << "2. Mostrar todos os registos que estao armazenados num ficheiro" << endl;
         cout << "3. Fechar o Programa" << endl;
         cout << "4. Mostrar o MENU" << endl;
-        cout << "5. Armazenar Ficha em todos registos" << endl;
-        cout << "6. Mostrar os registos de forma ordenada pela idade" << endl;
+        cout << "5. Pesquisar atraves do numero da inscricao" << endl;
+        cout << "6. Mostrar os registos por ordem da idade" << endl;
+
         cout << "Escolha: ";
         cin >> escolha;
         
         switch(escolha){
             case 1: {
-                num_fichas = num_fichas+1;
                 
+                ofstream fichabinario;
+                fichabinario.open("REGISTOS.dat", ios::binary | ios::app);
                 fichas[num_fichas].preencher();
-                
-                char nome_ficheiro[100];
-                
-                cout << "Nome do ficheiro: ";
-                cin.ignore();
-                cin.getline(nome_ficheiro, 100);
-                
-                ofstream fichabinario(nome_ficheiro, ios::out | ios::binary);
-            
                 fichas[num_fichas].identificacao_criar_ficheiro(fichabinario, fichas[num_fichas]);
                 fichabinario.close();
-                
+                num_fichas++;
                 break;
             }
             case 2: {
                 identificacao_ficha ficha;
 
-                char nomereadfich[100];
-                cout << "Nome do ficheiro: ";
-                cin.ignore();
-                cin.getline(nomereadfich, 100);
-                ifstream fichabinario_read(nomereadfich, ios::in | ios::binary);
+                ifstream fichabinario_read;
+                fichabinario_read.open("REGISTOS.dat", ios::in | ios::binary);
                 ficha.identificacao_imprimir_ficheiro(fichabinario_read, ficha);
+                fichabinario_read.close();
                 break;
             }
             case 3: {
@@ -52,24 +43,25 @@ int main(void){
                 return -1;
             }
             case 5: {
-                ofstream fichabinario_write("TODOSREGISTOS.dat", ios::out | ios::binary);
-                
-                fichas[0].identificacao_criartudo_ficheiro(fichabinario_write, fichas);
-                fichabinario_write.close();
-                break;
-            }
-            case 6: {
-                ofstream fichabinario_ordenado_o("ordenado.dat", ios::out | ios::binary);
+                int numero_inscricao;
+                ifstream ficheirobinario_read_numeroinscricao;
+                ficheirobinario_read_numeroinscricao.open("REGISTOS.dat", ios::in | ios::binary);
+                cout << "Introduze o numero da inscricao: ";
+                cin >> numero_inscricao;
+                while(!ficheirobinario_read_numeroinscricao.eof()){
+                    for(int i = 0; i <= num_fichas; i++){
+                        ficheirobinario_read_numeroinscricao.read((char*)(&fichas[i]), sizeof(&fichas[i]));
+                        if(!ficheirobinario_read_numeroinscricao.fail() && (numero_inscricao == fichas[i].num_inscricao)){
+                            fichas[i].imprimir();
+                        }
+                    }
 
-
-                ifstream fichabinario_ordenado("ordenado.dat", ios::in | ios::binary);
-                fichas[0].imprimir_ordenado(fichabinario_ordenado_o, fichabinario_ordenado, fichas);
-                
-
+                }
                 break;
             }
             default:
                 break;
+
         }
     
     } while(escolha != 3);
