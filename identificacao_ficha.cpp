@@ -13,6 +13,8 @@ identificacao_ficha::IDENTIFICACAO_FICHA(){
 
 }
 void IDENTIFICACAO_FICHA::preencher(){
+    ID = ID + 1;
+
     cout << "Numero da inscricao: ";
     cin >> num_inscricao;
 
@@ -75,8 +77,6 @@ void IDENTIFICACAO_FICHA::preencher(){
     cout << "Expresse neste espaço as suas expetativas face ao Curso e a esta escola: ";
     cin.ignore();
     cin.getline(expetativas, 500);
-
-    ID = ID + 1;
 }
 
 void IDENTIFICACAO_FICHA::identificacao_criar_ficheiro(ostream& f, identificacao_ficha ficha){
@@ -115,7 +115,7 @@ void IDENTIFICACAO_FICHA::imprimir(){
     cout << "Repetente: ";
     cout << repetente << endl;
 
-    cout << "Faltas Disciplinares: ";
+    cout << "Faltas Disciplinares : ";
     cout << faltas_disciplinares << endl;
 
     cout << "Razao da falta disciplinar: ";
@@ -140,11 +140,22 @@ void IDENTIFICACAO_FICHA::imprimir_ordem(identificacao_ficha fichas[100], int le
     for(int i = 0; i < len; i++){
         
         for(int j = 0; j<len-i-1; j++){
-            if(fichas[j].num_inscricao > fichas[j+1].num_inscricao){
+            if(fichas[j].aluno.idade > fichas[j+1].aluno.idade){
 
-                int temp = fichas[j].num_inscricao;
+                int temp = fichas[j].aluno.idade;
+                int temp_num = fichas[j].num_inscricao;
+
+                for(int i = 0; fichas[j].aluno.nome[i]!='\0'; i++){
+                    fichas[j+1].aluno.nome[i] = fichas[j].aluno.nome[i];
+                }
+
+
+                fichas[j].aluno.idade = fichas[j+1].aluno.idade;
                 fichas[j].num_inscricao = fichas[j+1].num_inscricao;
-                fichas[j+1].num_inscricao = temp;
+
+                fichas[j+1].aluno.idade = temp;
+                fichas[j+1].num_inscricao = temp_num;
+
             }
         }
     }

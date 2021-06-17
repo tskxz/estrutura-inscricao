@@ -41,7 +41,7 @@ int main(void){
             }
             case 3: {
                 cout << "Fechando o programa" << endl;
-                return -1;
+                return -1;  
             }
             case 5: {
                 int numero_inscricao;

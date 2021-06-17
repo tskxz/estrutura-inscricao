@@ -43,27 +43,30 @@ void classificacoes_disciplina::imprimir(){
         cout << tic[i] << ", ";
     }
     cout << "]";
+    cout << endl;
 
     cout << "Notas de matematica: [";
     for(int i = 0; i<=3; i++){
         cout << matematica[i] << ", ";
     }
     cout << "]";
-
+    cout << endl;
     cout << "Notas de portugues: [";
     for(int i = 0; i<=3; i++){
         cout << portugues[i] << ", ";
     }
     cout << "]";
-
+    cout << endl;
     cout << "Notas de ingles: [";
     for(int i = 0; i<=3; i++){
         cout << ingles[i] << ", ";
     }
     cout << "]";
+    cout << endl;
     cout << "Notas de fisica-quimica: [";
     for(int i = 0; i<=3; i++){
         cout << fisica_quimica[i] << ", ";
     }
     cout << "]";
+    cout << endl;
 }
